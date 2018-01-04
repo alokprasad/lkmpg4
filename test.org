@@ -1,4 +1,15 @@
-Here's a sample of our test suite.
+Org Mode in GitHub
+
+#+BEGIN_SRC plantuml :file sequence.png :exports results
+  @startuml sequence-diagram.png
+
+    Alice -> Bob: synchronous call
+    Alice ->> Bob: asynchronous call
+
+  @enduml
+#+END_SRC
+
+
 
 In the Org-mode file:
 
