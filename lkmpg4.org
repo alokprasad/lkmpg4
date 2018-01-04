@@ -20,11 +20,11 @@ If you publish or distribute this book commercially, donations, royalties, and/o
   
 ** Authorship
 
-The Linux Kernel Module Programming Guide was originally written for the 2.2 kernels by Ori Pomerantz. Eventually, Ori no longer had time to maintain the document. After all, the Linux kernel is a fast moving target. Peter Jay Salzman took over maintenance and updated it for the 2.4 kernels. Eventually, Peter no longer had time to follow developments with the 2.6 kernel, so Michael Burian became a co-maintainer to update the document for the 2.6 kernels.  Bob Mottram updated the examples for 3.8 and later kernels, added the sysfs chapter and modified or updated other chapters.
+The Linux Kernel Module Programming Guide was originally written for the 2.2 kernels by Ori Pomerantz. Eventually, Ori no longer had time to maintain the document. After all, the Linux kernel is a fast moving target. Peter Jay Salzman took over maintenance and updated it for the 2.4 kernels. Eventually, Peter no longer had time to follow developments with the 2.6 kernel, so Michael Burian became a co-maintainer to update the document for the 2.6 kernels.  Bob Mottram updated the examples for 3.8 and later kernels, added the sysfs chapter and modified or updated other chapters.This document is Fork of Bob Work to Further add 
 
 ** Versioning and Notes
 
-The Linux kernel is a moving target. There has always been a question whether the LKMPG should remove deprecated information or keep it around for historical sake. Michael Burian and I decided to create a new branch of the LKMPG for each new stable kernel version. So version LKMPG 4.12.x will address Linux kernel 4.12.x and LKMPG 2.6.x will address Linux kernel 2.6. No attempt will be made to archive historical information; a person wishing this information should read the appropriately versioned LKMPG.
+The Linux kernel is a moving target. There has always been a question whether the LKMPG should remove deprecated information or keep it around for historical sake. Michael Burian and I decided to create a new branch of the LKMPG for each new stable kernel version. So version LKMPG 4.14.x(4.14.10) will address Linux kernel 4.12.x and LKMPG 2.6.x will address Linux kernel 2.6. No attempt will be made to archive historical information; a person wishing this information should read the appropriately versioned LKMPG.
 
 The source code and discussions should apply to most architectures, but I can't promise anything.
 
@@ -42,17 +42,12 @@ What exactly is a kernel module? Modules are pieces of code that can be loaded a
 
 Linux distros provide the commands /modprobe/, /insmod/ and /depmod/ within a package.
 
-On Debian:
+On Ubuntu:
 
 #+BEGIN_SRC sh
 sudo apt-get install build-essential kmod
 #+END_SRC
 
-On Parabola:
-
-#+begin_src sh
-sudo pacman -S gcc kmod
-#+end_src
 
 ** What Modules are in my Kernel?
 
@@ -92,11 +87,7 @@ Modules can't print to the screen like printf() can, but they can log informatio
 * Headers
 Before you can build anything you'll need to install the header files for your kernel. On Parabola GNU/Linux:
 
-#+begin_src sh
-sudo pacman -S linux-libre-headers
-#+end_src
-
-On Debian:
+On Ubuntu:
 
 #+BEGIN_SRC sh
 sudo apt-get update
