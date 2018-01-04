@@ -1,5 +1,5 @@
 #+TITLE: The Linux Kernel Module Programming Guide
-#+AUTHOR: Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram
+#+AUTHOR: Peter Jay Salzman, Michael Burian, Ori Pomerantz, Bob Mottram ,Alok Prasad
 #+KEYWORDS: linux, kernel, kernel module, kernel programming
 #+DESCRIPTION: How to make kernel modules for Linux
 #+OPTIONS: ^:nil
@@ -20,7 +20,8 @@ If you publish or distribute this book commercially, donations, royalties, and/o
   
 ** Authorship
 
-The Linux Kernel Module Programming Guide was originally written for the 2.2 kernels by Ori Pomerantz. Eventually, Ori no longer had time to maintain the document. After all, the Linux kernel is a fast moving target. Peter Jay Salzman took over maintenance and updated it for the 2.4 kernels. Eventually, Peter no longer had time to follow developments with the 2.6 kernel, so Michael Burian became a co-maintainer to update the document for the 2.6 kernels.  Bob Mottram updated the examples for 3.8 and later kernels, added the sysfs chapter and modified or updated other chapters.This document is Fork of Bob Work to Further add 
+The Linux Kernel Module Programming Guide was originally written for the 2.2 kernels by Ori Pomerantz. Eventually, Ori no longer had time to maintain the document. After all, the Linux kernel is a fast moving target. Peter Jay Salzman took over maintenance and updated it for the 2.4 kernels. Eventually, Peter no longer had time to follow developments with the 2.6 kernel, so Michael Burian became a co-maintainer to update the document for the 2.6 kernels.  Bob Mottram updated the examples for 3.8 and later kernels, added the sysfs chapter and modified or updated other chapters.Alok Prasad forked Bob work to Further simplify the document and Added few more chapters
+for better understanding of kernel programming.
 
 ** Versioning and Notes
 
@@ -100,7 +101,23 @@ This will tell you what kernel header files are available. Then for example:
 sudo apt-get install kmod linux-headers-4.12.12-1-amd64
 #+END_SRC
 * Examples
-All the examples from this document are available within the /examples/ subdirectory. To test that they compile:
+Example List in this document can be compiled using make file.A generic Makefile to compile the module is listed
+below
+
+#+begin_src c
+###Makefile to Compile Kernel Module
+###Author : Alok Prasad
+###Usage  : make module=<module_filename(without.c)>
+#usage make module=<file>
+obj-m += $(module).o
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+#+end_src
+
 
 #+begin_src sh
 cd examples
